@@ -1,26 +1,56 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <navbar :pages="pages" :active-page="activePage" :nav-link-click="(index) => activePage = index"></navbar>
+
+
+    <div v-show="false"> hide this content</div>
+    <!-- <page-viewer v-if="pages.length > 0" :page="pages[activePage]"></page-viewer> -->
+
+    <createPage :page-created="pageCreated"></createPage>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import PageViewer from './components/PageViewer.vue';
+import Navbar from './components/Navbar.vue';
+import CreatePage from './components/createPage.vue';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+    components: {
+        Navbar,
+        PageViewer,
+        CreatePage,
+    },
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    created() {
+        this.getPages();
+    },
+
+
+    data() {
+        return {
+            activePage: 0,
+            // useDarkNavBar: true,
+            pages: [],
+        };
+    },
+
+    methods: {
+        async getPages() {
+            let res = await fetch('pages.json');
+            let data = await res.json();
+            this.pages = data;
+        },
+
+        pageCreated(pageObj) {
+            this.pages.push(pageObj);
+        }
+    },
+
+
 }
-</style>
+
+</script>
