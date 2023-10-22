@@ -1,0 +1,29 @@
+[
+    {
+        "link": {
+            "text": "Home",
+            "url": "index.html"
+        },
+        "pageTitle": "Hello Page",
+        "content": "this is home page",
+        "published": true
+    },
+    {
+        "link": {
+            "text": "About",
+            "url": "about.html"
+        },
+        "pageTitle": "About Page",
+        "content": "this is about content",
+        "published": true
+    },
+    {
+        "link": {
+            "text": "Contact",
+            "url": "content.html"
+        },
+        "pageTitle": "About Page",
+        "content": "this is about content",
+        "published": false
+    }
+]
