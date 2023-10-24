@@ -61,7 +61,23 @@
 <script>
 
 export default {
-    props: ['pageCreated'],
+    // props: ['pageCrea ted'],
+    emits: {
+        pageCreated({ pageTitle, content, link }) {
+            if (!pageTitle) {
+                return false;
+            }
+            if (!content) {
+                return false;
+            }
+
+            if (!link || !link.text || !link.url) {
+                return false;
+            }
+
+            return true;
+        }
+    },
     computed: {
         isFormInvalid() {
             return !this.pageTitle || !this.content || !this.linkText || !this.linkUrl;
@@ -87,15 +103,29 @@ export default {
                 return;
             }
 
-            this.pageCreated({
-                pageTitle: this.pageTitle,
-                content: this.content,
-                link: {
-                    text: this.linkText,
-                    url: this.linkUrl
-                },
-                published: this.published
-            });
+            this.$emit('pageCreated',
+                {
+                    pageTitle: this.pageTitle,
+                    content: this.content,
+                    link: {
+                        text: this.linkText,
+                        url: this.linkUrl
+                    },
+                    published: this.published
+                }
+            );
+
+            // this.pageCreated(
+            // {
+            //     pageTitle: this.pageTitle,
+            //     content: this.content,
+            //     link: {
+            //         text: this.linkText,
+            //         url: this.linkUrl
+            //     },
+            //     published: this.published
+            // }
+            // );
 
             this.pageTitle = '';
             this.content = '';
