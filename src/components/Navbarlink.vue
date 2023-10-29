@@ -1,9 +1,9 @@
 <template>
     <li>
-        <a class="nav-link" :class="activeClasses" aria-current="page" v-bind:href="page.link.url"
-            :title="`this link goes to ${page.link.text}`" @click.prevent="$bus.$emit('navbarLinkActived', index)">{{
+        <router-link v-bind:to="`/${index}`" class="nav-link" :class="activeClasses" aria-current="page"
+            :title="`this link goes to ${page.link.text}`">{{
                 page.link.text
-            }}</a>
+            }}</router-link>
     </li>
 </template>
 

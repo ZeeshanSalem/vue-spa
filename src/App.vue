@@ -2,10 +2,13 @@
     <navbar :pages="pages" :active-page="activePage"></navbar>
 
 
-    <div v-show="false"> hide this content</div>
+    <router-view></router-view>
+
+    <!-- this is for with out router -->
+    <!-- <div v-show="false"> hide this content</div>
     <page-viewer v-if="pages.length > 0" :page="pages[activePage]"></page-viewer>
 
-    <createPage @page-created="pageCreated"></createPage>
+    <createPage @page-created="pageCreated"></createPage> -->
 </template>
 
 
