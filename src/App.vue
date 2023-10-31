@@ -1,10 +1,11 @@
 <template>
     <!-- <navbar :pages="pages" :active-page="activePage"></navbar> -->
-
+    <div>
         <navbar></navbar>
 
     <router-view></router-view>
-    
+    </div>
+
     <!-- this is for with out router -->
     <!-- <div v-show="false"> hide this content</div>
     <page-viewer v-if="pages.length > 0" :page="pages[activePage]"></page-viewer>
